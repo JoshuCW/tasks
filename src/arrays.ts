@@ -123,11 +123,8 @@ export function injectPositive(values: number[]): number[] {
         (value: number): boolean => value < 0
     );
     const sum =
-        firstNegativeIndex === -1
-            ? values.reduce((value, value1) => value + value1, 0)
-            : values
-                  .slice(0, firstNegativeIndex)
-                  .reduce((value, value1) => value + value1, 0);
+        // eslint-disable-next-line prettier/prettier
+        firstNegativeIndex === -1 ? values.reduce((value, value1) => value + value1, 0) : values.slice(0, firstNegativeIndex).reduce((value, value1) => value + value1, 0);
 
     if (firstNegativeIndex == -1) {
         return [...values, sum];
