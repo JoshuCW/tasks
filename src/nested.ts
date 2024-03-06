@@ -140,7 +140,7 @@ export function publishAll(questions: Question[]): Question[] {
  * are the same type. They can be any type, as long as they are all the SAME type.
  */
 export function sameType(questions: Question[]): boolean {
-    if (questions.length <= 1){
+    if (questions.length <= 1) {
         return true;
     }
     const q = questions[0].type;
