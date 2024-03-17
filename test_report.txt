@@ -12,50 +12,462 @@ Browserslist: caniuse-lite is outdated. Please run:
   npx browserslist@latest --update-db
   Why you should do it regularly: https://github.com/browserslist/browserslist#browsers-data-updating
 PASS src/objects.test.ts
-PASS src/nested.test.ts
 PASS src/arrays.test.ts
+PASS src/nested.test.ts
+PASS src/form-components/MultipleChoiceQuestion.test.tsx
 PASS src/components/StartAttempt.test.tsx
-PASS src/bad-components/ChooseTeam.test.tsx
 PASS src/components/TwoDice.test.tsx
-PASS src/bad-components/DoubleHalf.test.tsx
 PASS src/functions.test.ts
+PASS src/bad-components/DoubleHalf.test.tsx
+PASS src/bad-components/ChooseTeam.test.tsx
+PASS src/form-components/CheckAnswer.test.tsx
+FAIL src/form-components/EditMode.test.tsx
+  ● EditMode Component tests › There is one checkbox and no textboxes
+
+    TestingLibraryElementError: Found multiple elements with the role "checkbox"
+
+    Here are the matching elements:
+
+    Ignored nodes: comments, <script />, <style />
+    [36m<input[39m
+      [33mchecked[39m=[32m""[39m
+      [33mdisabled[39m=[32m""[39m
+      [33mtype[39m=[32m"checkbox"[39m
+    [36m/>[39m
+
+    Ignored nodes: comments, <script />, <style />
+    [36m<input[39m
+      [33mclass[39m=[32m"form-check-input"[39m
+      [33mid[39m=[32m"edit-mode"[39m
+      [33mtype[39m=[32m"checkbox"[39m
+    [36m/>[39m
+
+    (If this is intentional, then use the `*AllBy*` variant of the query (like `queryAllByText`, `getAllByText`, or `findAllByText`)).
+
+    Ignored nodes: comments, <script />, <style />
+    [36m<body>[39m
+      [36m<div>[39m
+        [36m<div>[39m
+          [36m<h3>[39m
+            [0mEdit Mode[0m
+          [36m</h3>[39m
+          [36m<div>[39m
+            [36m<label>[39m
+              [0mName:[0m
+              [36m<input[39m
+                [33mdisabled[39m=[32m""[39m
+                [33mtype[39m=[32m"text"[39m
+                [33mvalue[39m=[32m"Your Name"[39m
+              [36m/>[39m
+            [36m</label>[39m
+          [36m</div>[39m
+          [36m<div>[39m
+            [36m<label>[39m
+              [0mStudent:[0m
+              [36m<input[39m
+                [33mchecked[39m=[32m""[39m
+                [33mdisabled[39m=[32m""[39m
+                [33mtype[39m=[32m"checkbox"[39m
+              [36m/>[39m
+            [36m</label>[39m
+          [36m</div>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"form-check form-switch"[39m
+          [36m>[39m
+            [36m<input[39m
+              [33mclass[39m=[32m"form-check-input"[39m
+              [33mid[39m=[32m"edit-mode"[39m
+              [33mtype[39m=[32m"checkbox"[39m
+            [36m/>[39m
+            [36m<label[39m
+              [33mclass[39m=[32m"form-check-label"[39m
+              [33mfor[39m=[32m"edit-mode"[39m
+              [33mtitle[39m=[32m""[39m
+            [36m>[39m
+              [0mEdit Mode:[0m
+            [36m</label>[39m
+          [36m</div>[39m
+        [36m</div>[39m
+      [36m</div>[39m
+    [36m</body>[39m
+
+       7 |     beforeEach(() => render(<EditMode />));
+       8 |     test("There is one checkbox and no textboxes", () => {
+    >  9 |         const switchButton = screen.getByRole("checkbox");
+         |                                     ^
+      10 |         expect(switchButton).toBeInTheDocument();
+      11 |         expect(switchButton.parentElement).toHaveClass("form-switch");
+      12 |         expect(screen.queryByRole("textbox")).not.toBeInTheDocument();
+
+      at Object.getElementError (node_modules/@testing-library/dom/dist/config.js:38:19)
+      at getElementError (node_modules/@testing-library/dom/dist/query-helpers.js:25:35)
+      at getMultipleElementsFoundError (node_modules/@testing-library/dom/dist/query-helpers.js:29:10)
+      at node_modules/@testing-library/dom/dist/query-helpers.js:66:13
+      at getByRole (node_modules/@testing-library/dom/dist/query-helpers.js:111:19)
+      at Object.<anonymous> (src/form-components/EditMode.test.tsx:9:37)
+
+  ● EditMode Component tests › Initial text should be 'Your Name is a student'.
+
+    TestingLibraryElementError: Unable to find an element with the text: /Your Name is a student/i. This could be because the text is broken up by multiple elements. In this case, you can provide a function for your text matcher to make your matcher more flexible.
+
+    Ignored nodes: comments, <script />, <style />
+    [36m<body>[39m
+      [36m<div>[39m
+        [36m<div>[39m
+          [36m<h3>[39m
+            [0mEdit Mode[0m
+          [36m</h3>[39m
+          [36m<div>[39m
+            [36m<label>[39m
+              [0mName:[0m
+              [36m<input[39m
+                [33mdisabled[39m=[32m""[39m
+                [33mtype[39m=[32m"text"[39m
+                [33mvalue[39m=[32m"Your Name"[39m
+              [36m/>[39m
+            [36m</label>[39m
+          [36m</div>[39m
+          [36m<div>[39m
+            [36m<label>[39m
+              [0mStudent:[0m
+              [36m<input[39m
+                [33mchecked[39m=[32m""[39m
+                [33mdisabled[39m=[32m""[39m
+                [33mtype[39m=[32m"checkbox"[39m
+              [36m/>[39m
+            [36m</label>[39m
+          [36m</div>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"form-check form-switch"[39m
+          [36m>[39m
+            [36m<input[39m
+              [33mclass[39m=[32m"form-check-input"[39m
+              [33mid[39m=[32m"edit-mode"[39m
+              [33mtype[39m=[32m"checkbox"[39m
+            [36m/>[39m
+            [36m<label[39m
+              [33mclass[39m=[32m"form-check-label"[39m
+              [33mfor[39m=[32m"edit-mode"[39m
+              [33mtitle[39m=[32m""[39m
+            [36m>[39m
+              [0mEdit Mode:[0m
+            [36m</label>[39m
+          [36m</div>[39m
+        [36m</div>[39m
+      [36m</div>[39m
+    [36m</body>[39m
+
+      13 |     });
+      14 |     test("Initial text should be 'Your Name is a student'.", () => {
+    > 15 |         expect(screen.getByText(/Your Name is a student/i)).toBeInTheDocument();
+         |                       ^
+      16 |     });
+      17 |     test("Can switch into Edit Mode", () => {
+      18 |         const switchButton = screen.getByRole("checkbox");
+
+      at Object.getElementError (node_modules/@testing-library/dom/dist/config.js:38:19)
+      at node_modules/@testing-library/dom/dist/query-helpers.js:90:38
+      at node_modules/@testing-library/dom/dist/query-helpers.js:62:17
+      at getByText (node_modules/@testing-library/dom/dist/query-helpers.js:111:19)
+      at Object.<anonymous> (src/form-components/EditMode.test.tsx:15:23)
+
+  ● EditMode Component tests › Can switch into Edit Mode
+
+    TestingLibraryElementError: Found multiple elements with the role "checkbox"
+
+    Here are the matching elements:
+
+    Ignored nodes: comments, <script />, <style />
+    [36m<input[39m
+      [33mchecked[39m=[32m""[39m
+      [33mdisabled[39m=[32m""[39m
+      [33mtype[39m=[32m"checkbox"[39m
+    [36m/>[39m
+
+    Ignored nodes: comments, <script />, <style />
+    [36m<input[39m
+      [33mclass[39m=[32m"form-check-input"[39m
+      [33mid[39m=[32m"edit-mode"[39m
+      [33mtype[39m=[32m"checkbox"[39m
+    [36m/>[39m
+
+    (If this is intentional, then use the `*AllBy*` variant of the query (like `queryAllByText`, `getAllByText`, or `findAllByText`)).
+
+    Ignored nodes: comments, <script />, <style />
+    [36m<body>[39m
+      [36m<div>[39m
+        [36m<div>[39m
+          [36m<h3>[39m
+            [0mEdit Mode[0m
+          [36m</h3>[39m
+          [36m<div>[39m
+            [36m<label>[39m
+              [0mName:[0m
+              [36m<input[39m
+                [33mdisabled[39m=[32m""[39m
+                [33mtype[39m=[32m"text"[39m
+                [33mvalue[39m=[32m"Your Name"[39m
+              [36m/>[39m
+            [36m</label>[39m
+          [36m</div>[39m
+          [36m<div>[39m
+            [36m<label>[39m
+              [0mStudent:[0m
+              [36m<input[39m
+                [33mchecked[39m=[32m""[39m
+                [33mdisabled[39m=[32m""[39m
+                [33mtype[39m=[32m"checkbox"[39m
+              [36m/>[39m
+            [36m</label>[39m
+          [36m</div>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"form-check form-switch"[39m
+          [36m>[39m
+            [36m<input[39m
+              [33mclass[39m=[32m"form-check-input"[39m
+              [33mid[39m=[32m"edit-mode"[39m
+              [33mtype[39m=[32m"checkbox"[39m
+            [36m/>[39m
+            [36m<label[39m
+              [33mclass[39m=[32m"form-check-label"[39m
+              [33mfor[39m=[32m"edit-mode"[39m
+              [33mtitle[39m=[32m""[39m
+            [36m>[39m
+              [0mEdit Mode:[0m
+            [36m</label>[39m
+          [36m</div>[39m
+        [36m</div>[39m
+      [36m</div>[39m
+    [36m</body>[39m
+
+      16 |     });
+      17 |     test("Can switch into Edit Mode", () => {
+    > 18 |         const switchButton = screen.getByRole("checkbox");
+         |                                     ^
+      19 |         switchButton.click();
+      20 |         expect(screen.getByRole("textbox")).toBeInTheDocument();
+      21 |         expect(screen.getAllByRole("checkbox")).toHaveLength(2);
+
+      at Object.getElementError (node_modules/@testing-library/dom/dist/config.js:38:19)
+      at getElementError (node_modules/@testing-library/dom/dist/query-helpers.js:25:35)
+      at getMultipleElementsFoundError (node_modules/@testing-library/dom/dist/query-helpers.js:29:10)
+      at node_modules/@testing-library/dom/dist/query-helpers.js:66:13
+      at getByRole (node_modules/@testing-library/dom/dist/query-helpers.js:111:19)
+      at Object.<anonymous> (src/form-components/EditMode.test.tsx:18:37)
+
+  ● EditMode Component tests › Editing the name and student status changes the text
+
+    TestingLibraryElementError: Found multiple elements with the role "checkbox"
+
+    Here are the matching elements:
+
+    Ignored nodes: comments, <script />, <style />
+    [36m<input[39m
+      [33mchecked[39m=[32m""[39m
+      [33mdisabled[39m=[32m""[39m
+      [33mtype[39m=[32m"checkbox"[39m
+    [36m/>[39m
+
+    Ignored nodes: comments, <script />, <style />
+    [36m<input[39m
+      [33mclass[39m=[32m"form-check-input"[39m
+      [33mid[39m=[32m"edit-mode"[39m
+      [33mtype[39m=[32m"checkbox"[39m
+    [36m/>[39m
+
+    (If this is intentional, then use the `*AllBy*` variant of the query (like `queryAllByText`, `getAllByText`, or `findAllByText`)).
+
+    Ignored nodes: comments, <script />, <style />
+    [36m<body>[39m
+      [36m<div>[39m
+        [36m<div>[39m
+          [36m<h3>[39m
+            [0mEdit Mode[0m
+          [36m</h3>[39m
+          [36m<div>[39m
+            [36m<label>[39m
+              [0mName:[0m
+              [36m<input[39m
+                [33mdisabled[39m=[32m""[39m
+                [33mtype[39m=[32m"text"[39m
+                [33mvalue[39m=[32m"Your Name"[39m
+              [36m/>[39m
+            [36m</label>[39m
+          [36m</div>[39m
+          [36m<div>[39m
+            [36m<label>[39m
+              [0mStudent:[0m
+              [36m<input[39m
+                [33mchecked[39m=[32m""[39m
+                [33mdisabled[39m=[32m""[39m
+                [33mtype[39m=[32m"checkbox"[39m
+              [36m/>[39m
+            [36m</label>[39m
+          [36m</div>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"form-check form-switch"[39m
+          [36m>[39m
+            [36m<input[39m
+              [33mclass[39m=[32m"form-check-input"[39m
+              [33mid[39m=[32m"edit-mode"[39m
+              [33mtype[39m=[32m"checkbox"[39m
+            [36m/>[39m
+            [36m<label[39m
+              [33mclass[39m=[32m"form-check-label"[39m
+              [33mfor[39m=[32m"edit-mode"[39m
+              [33mtitle[39m=[32m""[39m
+            [36m>[39m
+              [0mEdit Mode:[0m
+            [36m</label>[39m
+          [36m</div>[39m
+        [36m</div>[39m
+      [36m</div>[39m
+    [36m</body>[39m
+
+      22 |     });
+      23 |     test("Editing the name and student status changes the text", () => {
+    > 24 |         const switchButton = screen.getByRole("checkbox");
+         |                                     ^
+      25 |         switchButton.click();
+      26 |         const nameBox = screen.getByRole("textbox");
+      27 |         userEvent.type(nameBox, "Ada Lovelace");
+
+      at Object.getElementError (node_modules/@testing-library/dom/dist/config.js:38:19)
+      at getElementError (node_modules/@testing-library/dom/dist/query-helpers.js:25:35)
+      at getMultipleElementsFoundError (node_modules/@testing-library/dom/dist/query-helpers.js:29:10)
+      at node_modules/@testing-library/dom/dist/query-helpers.js:66:13
+      at getByRole (node_modules/@testing-library/dom/dist/query-helpers.js:111:19)
+      at Object.<anonymous> (src/form-components/EditMode.test.tsx:24:37)
+
+  ● EditMode Component tests › Different name, click student box twice changes the text
+
+    TestingLibraryElementError: Found multiple elements with the role "checkbox"
+
+    Here are the matching elements:
+
+    Ignored nodes: comments, <script />, <style />
+    [36m<input[39m
+      [33mchecked[39m=[32m""[39m
+      [33mdisabled[39m=[32m""[39m
+      [33mtype[39m=[32m"checkbox"[39m
+    [36m/>[39m
+
+    Ignored nodes: comments, <script />, <style />
+    [36m<input[39m
+      [33mclass[39m=[32m"form-check-input"[39m
+      [33mid[39m=[32m"edit-mode"[39m
+      [33mtype[39m=[32m"checkbox"[39m
+    [36m/>[39m
+
+    (If this is intentional, then use the `*AllBy*` variant of the query (like `queryAllByText`, `getAllByText`, or `findAllByText`)).
+
+    Ignored nodes: comments, <script />, <style />
+    [36m<body>[39m
+      [36m<div>[39m
+        [36m<div>[39m
+          [36m<h3>[39m
+            [0mEdit Mode[0m
+          [36m</h3>[39m
+          [36m<div>[39m
+            [36m<label>[39m
+              [0mName:[0m
+              [36m<input[39m
+                [33mdisabled[39m=[32m""[39m
+                [33mtype[39m=[32m"text"[39m
+                [33mvalue[39m=[32m"Your Name"[39m
+              [36m/>[39m
+            [36m</label>[39m
+          [36m</div>[39m
+          [36m<div>[39m
+            [36m<label>[39m
+              [0mStudent:[0m
+              [36m<input[39m
+                [33mchecked[39m=[32m""[39m
+                [33mdisabled[39m=[32m""[39m
+                [33mtype[39m=[32m"checkbox"[39m
+              [36m/>[39m
+            [36m</label>[39m
+          [36m</div>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"form-check form-switch"[39m
+          [36m>[39m
+            [36m<input[39m
+              [33mclass[39m=[32m"form-check-input"[39m
+              [33mid[39m=[32m"edit-mode"[39m
+              [33mtype[39m=[32m"checkbox"[39m
+            [36m/>[39m
+            [36m<label[39m
+              [33mclass[39m=[32m"form-check-label"[39m
+              [33mfor[39m=[32m"edit-mode"[39m
+              [33mtitle[39m=[32m""[39m
+            [36m>[39m
+              [0mEdit Mode:[0m
+            [36m</label>[39m
+          [36m</div>[39m
+        [36m</div>[39m
+      [36m</div>[39m
+    [36m</body>[39m
+
+      34 |     });
+      35 |     test("Different name, click student box twice changes the text", () => {
+    > 36 |         const switchButton = screen.getByRole("checkbox");
+         |                                     ^
+      37 |         switchButton.click();
+      38 |         const nameBox = screen.getByRole("textbox");
+      39 |         userEvent.type(nameBox, "Alan Turing");
+
+      at Object.getElementError (node_modules/@testing-library/dom/dist/config.js:38:19)
+      at getElementError (node_modules/@testing-library/dom/dist/query-helpers.js:25:35)
+      at getMultipleElementsFoundError (node_modules/@testing-library/dom/dist/query-helpers.js:29:10)
+      at node_modules/@testing-library/dom/dist/query-helpers.js:66:13
+      at getByRole (node_modules/@testing-library/dom/dist/query-helpers.js:111:19)
+      at Object.<anonymous> (src/form-components/EditMode.test.tsx:36:37)
+
 PASS src/components/ChangeType.test.tsx
-PASS src/components/Counter.test.tsx
 PASS src/components/CycleHoliday.test.tsx
+PASS src/form-components/GiveAttempts.test.tsx
+PASS src/form-components/ChangeColor.test.tsx
+PASS src/components/Counter.test.tsx
 PASS src/components/RevealAnswer.test.tsx
 PASS src/bad-components/ColoredBox.test.tsx
 PASS src/bad-components/ShoveBox.test.tsx
 PASS src/App.test.tsx
-----------------------|---------|----------|---------|---------|-------------------
-File                  | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s 
-----------------------|---------|----------|---------|---------|-------------------
-All files             |   98.06 |    93.02 |     100 |    97.9 |                   
- src                  |   97.82 |    93.93 |     100 |   97.57 |                   
-  App.tsx             |     100 |      100 |     100 |     100 |                   
-  arrays.ts           |     100 |      100 |     100 |     100 |                   
-  functions.ts        |     100 |      100 |     100 |     100 |                   
-  nested.ts           |   95.18 |    78.94 |     100 |   94.28 | 179,202,232,259   
-  objects.ts          |     100 |      100 |     100 |     100 |                   
- src/bad-components   |   97.22 |       50 |     100 |   97.14 |                   
-  ChooseTeam.tsx      |     100 |       50 |     100 |     100 | 18                
-  ColoredBox.tsx      |     100 |      100 |     100 |     100 |                   
-  DoubleHalf.tsx      |     100 |      100 |     100 |     100 |                   
-  DoubleHalfState.tsx |       0 |      100 |     100 |       0 | 3                 
-  ShoveBox.tsx        |     100 |      100 |     100 |     100 |                   
- src/components       |     100 |    94.44 |     100 |     100 |                   
-  ChangeType.tsx      |     100 |      100 |     100 |     100 |                   
-  Counter.tsx         |     100 |      100 |     100 |     100 |                   
-  CycleHoliday.tsx    |     100 |      100 |     100 |     100 |                   
-  RevealAnswer.tsx    |     100 |      100 |     100 |     100 |                   
-  StartAttempt.tsx    |     100 |       75 |     100 |     100 | 8                 
-  TwoDice.tsx         |     100 |      100 |     100 |     100 |                   
- src/interfaces       |       0 |        0 |       0 |       0 |                   
-  answer.ts           |       0 |        0 |       0 |       0 |                   
-  question.ts         |       0 |        0 |       0 |       0 |                   
-----------------------|---------|----------|---------|---------|-------------------
+-----------------------------|---------|----------|---------|---------|-------------------
+File                         | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s 
+-----------------------------|---------|----------|---------|---------|-------------------
+All files                    |   96.66 |    88.77 |    97.5 |   96.42 |                   
+ src                         |   97.82 |    93.93 |     100 |   97.57 |                   
+  App.tsx                    |     100 |      100 |     100 |     100 |                   
+  arrays.ts                  |     100 |      100 |     100 |     100 |                   
+  functions.ts               |     100 |      100 |     100 |     100 |                   
+  nested.ts                  |   95.18 |    78.94 |     100 |   94.28 | 179,202,232,259   
+  objects.ts                 |     100 |      100 |     100 |     100 |                   
+ src/bad-components          |   97.22 |       50 |     100 |   97.14 |                   
+  ChooseTeam.tsx             |     100 |       50 |     100 |     100 | 18                
+  ColoredBox.tsx             |     100 |      100 |     100 |     100 |                   
+  DoubleHalf.tsx             |     100 |      100 |     100 |     100 |                   
+  DoubleHalfState.tsx        |       0 |      100 |     100 |       0 | 3                 
+  ShoveBox.tsx               |     100 |      100 |     100 |     100 |                   
+ src/components              |     100 |    94.44 |     100 |     100 |                   
+  ChangeType.tsx             |     100 |      100 |     100 |     100 |                   
+  Counter.tsx                |     100 |      100 |     100 |     100 |                   
+  CycleHoliday.tsx           |     100 |      100 |     100 |     100 |                   
+  RevealAnswer.tsx           |     100 |      100 |     100 |     100 |                   
+  StartAttempt.tsx           |     100 |       75 |     100 |     100 | 8                 
+  TwoDice.tsx                |     100 |      100 |     100 |     100 |                   
+ src/form-components         |    87.8 |    58.33 |   81.25 |    87.8 |                   
+  ChangeColor.tsx            |     100 |      100 |     100 |     100 |                   
+  CheckAnswer.tsx            |     100 |      100 |     100 |     100 |                   
+  EditMode.tsx               |   58.33 |        0 |      25 |   58.33 | 10,14-15,20-21    
+  GiveAttempts.tsx           |     100 |       75 |     100 |     100 | 7                 
+  MultipleChoiceQuestion.tsx |     100 |      100 |     100 |     100 |                   
+ src/interfaces              |       0 |        0 |       0 |       0 |                   
+  answer.ts                  |       0 |        0 |       0 |       0 |                   
+  question.ts                |       0 |        0 |       0 |       0 |                   
+-----------------------------|---------|----------|---------|---------|-------------------
 
-Test Suites: 15 passed, 15 total
-Tests:       110 passed, 110 total
+Test Suites: 1 failed, 19 passed, 20 total
+Tests:       5 failed, 129 passed, 134 total
 Snapshots:   0 total
-Time:        6.493 s
+Time:        7.309 s
 Ran all test suites.
